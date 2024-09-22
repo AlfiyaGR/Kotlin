@@ -1,3 +1,3 @@
 fun main() {
-    println("Today is sunny!)
+    println("Today is sunny!")
 }
