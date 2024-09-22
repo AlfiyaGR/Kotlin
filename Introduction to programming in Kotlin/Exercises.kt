@@ -1,3 +1,3 @@
 fun main() {
-    println("Tomorrow is rainy")
+    printLine("There is a chance of snow")
 }
