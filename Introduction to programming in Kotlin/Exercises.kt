@@ -1,3 +1,5 @@
 fun main() {
-    println("Cloudy") println("Partly Cloudy") println("Windy")
+    println("Cloudy") 
+    println("Partly Cloudy") 
+    println("Windy")
 }
