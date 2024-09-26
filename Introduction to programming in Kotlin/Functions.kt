@@ -1,15 +1,8 @@
 fun main() {
-    val firstNumber = 10
-    val secondNumber = 5
-    val thirdNumber = 8
-    
-    val result = sub(firstNumber, secondNumber)
-    val anotherResult = sub(firstNumber, thirdNumber)
-
-    println("$firstNumber - $secondNumber = $result")
-    println("$firstNumber - $thirdNumber = $anotherResult")
+    println(birthdayGreeting(age = 5))
+    println(birthdayGreeting("Rex", 2))
 }
 
-fun sub(firstNumber: Int, secondNumber: Int): Int {
-    return firstNumber - secondNumber
+fun birthdayGreeting(name: String = "Rover", age: Int): String {
+    return "Happy Birthday, $name! You are now $age years old!"
 }
