@@ -1,8 +1,9 @@
 fun main() {
-    birthdayGreeting()
+    println(birthdayGreeting())
 }
 
-fun birthdayGreeting(): Unit {
-    println("Happy Birthday, Rover!")
-    println("You are now 5 years old!")
+fun birthdayGreeting(): String {
+    val nameGreeting = "Happy Birthday, Rover!"
+    val ageGreeting = "You are now 5 years old!"
+    return "$nameGreeting\n$ageGreeting"
 }
