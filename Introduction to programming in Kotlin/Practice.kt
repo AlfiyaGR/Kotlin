@@ -1,9 +1,6 @@
 fun main() {
-    var discountPercentage: Int = 0
-    var offer: String = ""
-    val item = "Google Chromecast"
-    discountPercentage = 20
-    offer = "Sale - Up to $discountPercentage% discount on $item! Hurry up!"
-    
-    println(offer)
+    val numberOfAdults = "20"
+    val numberOfKids = "30"
+    val total = numberOfAdults + numberOfKids
+    println("The total party size is: $total")
 }
