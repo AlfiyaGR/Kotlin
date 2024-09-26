@@ -1,9 +1,13 @@
 fun main() {
-    println(compareNumbers(300, 250))
-    println(compareNumbers(300, 300))
-    println(compareNumbers(200, 220))
+    println(weather("Ankara", "27", "31", "82"))
+    println(weather("Tokyo", "32", "36", "10"))
+    println(weather("Cape Town", "59", "64", "2"))
+    println(weather("Guatemala City", "50", "55", "7"))
 }
 
-fun compareNumbers(timeSpentToday: Int, timepentYesterday: Int): Boolean {
-    return timeSpentToday > timepentYesterday
+fun weather(city: String, lowTemp: String, highTemp: String, chanceOfRain: String): String {
+    var city = "City: $city\n"
+    var temp = "Low temperature: $lowTemp, High temperature: $highTemp\n"
+    var rain = "Chance of rain: $chanceOfRain%\n"
+    return city + temp + rain
 }
