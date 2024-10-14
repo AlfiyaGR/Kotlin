@@ -1,8 +1,14 @@
-class SmartDevice {
+class SmartDevice(val name: String, val category: String) {
 
-    val name = "Android TV"
-    val category = "Entertainment"
     var deviceStatus = "online"
+    
+    constructor(name: String, category: String, statusCode: Int) : this(name, category) {
+        deviceStatus = when (statusCode) {
+            0 -> "offline"
+            1 -> "online"
+            else -> "unknown"
+        }
+    }
 
     fun turnOn() {
         println("Smart device is turned on.")
@@ -14,7 +20,7 @@ class SmartDevice {
 }
 
 fun main() {
-    val smartTvDevice = SmartDevice()
+    val smartTvDevice = SmartDevice("Android TV", "Entertainment")
     println("Device name is: ${smartTvDevice.name}")
     smartTvDevice.turnOn()
     smartTvDevice.turnOff()
