@@ -1,4 +1,4 @@
 fun main() {
     var favoriteActor: String? = null
-    println(favoriteActor?.length)
+    println(favoriteActor!!.length)
 }
