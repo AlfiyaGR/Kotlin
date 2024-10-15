@@ -1,4 +1,4 @@
-open class SmartDevice(val name: String, val category: String) {
+internal open class SmartDevice protected constructor (val name: String, val category: String) {
 
     var deviceStatus = "online"
         protected set
@@ -38,7 +38,7 @@ class SmartTvDevice(deviceName: String, deviceCategory: String) :
         println("Speaker volume increased to $speakerVolume.")
     }
 
-    fun nextChannel() {
+    protected fun nextChannel() {
         channelNumber++
         println("Channel number increased to $channelNumber.")
     }
