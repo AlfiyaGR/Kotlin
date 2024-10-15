@@ -1,6 +1,8 @@
 open class SmartDevice(val name: String, val category: String) {
 
     var deviceStatus = "online"
+    
+    open val deviceType = "unknown"
 
     open fun turnOn() {
         deviceStatus = "on"
@@ -13,6 +15,8 @@ open class SmartDevice(val name: String, val category: String) {
 
 class SmartTvDevice(deviceName: String, deviceCategory: String) :
     SmartDevice(name = deviceName, category = deviceCategory) {
+        
+    override val deviceType = "Smart TV"
 
     var speakerVolume = 2
         set(value) {
@@ -54,7 +58,9 @@ class SmartTvDevice(deviceName: String, deviceCategory: String) :
     
 class SmartLightDevice(deviceName: String, deviceCategory: String) :
     SmartDevice(name = deviceName, category = deviceCategory) {
-
+    
+    override val deviceType = "Smart Light"
+        
     var brightnessLevel = 0
         set(value) {
             if (value in 0..100) {
