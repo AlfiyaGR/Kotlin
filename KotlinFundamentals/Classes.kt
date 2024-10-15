@@ -1,6 +1,7 @@
 open class SmartDevice(val name: String, val category: String) {
 
     var deviceStatus = "online"
+        protected set
     
     open val deviceType = "unknown"
 
@@ -91,12 +92,17 @@ class SmartHome(
     val smartTvDevice: SmartTvDevice,
     val smartLightDevice: SmartLightDevice
 ) {
+    
+    var deviceTurnOnCount = 0
+        private set
 
     fun turnOnTv() {
+        deviceTurnOnCount++
         smartTvDevice.turnOn()
     }
 
     fun turnOffTv() {
+        deviceTurnOnCount--
         smartTvDevice.turnOff()
     }
 
@@ -109,10 +115,12 @@ class SmartHome(
     }
     
     fun turnOnLight() {
+        deviceTurnOnCount++
         smartLightDevice.turnOn()
     }
 
     fun turnOffLight() {
+        deviceTurnOnCount--
         smartLightDevice.turnOff()
     }
     
