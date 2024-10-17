@@ -5,7 +5,7 @@ open class SmartDevice(val name: String, val category: String) {
 
     var deviceStatus = "online"
         protected set
-    
+
     open val deviceType = "unknown"
 
     open fun turnOn() {
@@ -19,9 +19,9 @@ open class SmartDevice(val name: String, val category: String) {
 
 class SmartTvDevice(deviceName: String, deviceCategory: String) :
     SmartDevice(name = deviceName, category = deviceCategory) {
-        
+
     override val deviceType = "Smart TV"
-        
+
     private var speakerVolume by RangeRegulator(initialValue = 2, minValue = 0, maxValue = 100)
 
     private var channelNumber by RangeRegulator(initialValue = 1, minValue = 0, maxValue = 200)
@@ -49,12 +49,12 @@ class SmartTvDevice(deviceName: String, deviceCategory: String) :
         println("$name turned off")
     }
 }
-    
+
 class SmartLightDevice(deviceName: String, deviceCategory: String) :
     SmartDevice(name = deviceName, category = deviceCategory) {
-    
+
     override val deviceType = "Smart Light"
-        
+
     private var brightnessLevel by RangeRegulator(initialValue = 0, minValue = 0, maxValue = 100)
 
     fun increaseBrightness() {
@@ -74,13 +74,12 @@ class SmartLightDevice(deviceName: String, deviceCategory: String) :
         println("Smart Light turned off")
     }
 }
-    
-// The SmartHome class HAS-A smart TV device.
+
 class SmartHome(
     val smartTvDevice: SmartTvDevice,
     val smartLightDevice: SmartLightDevice
 ) {
-    
+
     var deviceTurnOnCount = 0
         private set
 
@@ -101,7 +100,7 @@ class SmartHome(
     fun changeTvChannelToNext() {
         smartTvDevice.nextChannel()
     }
-    
+
     fun turnOnLight() {
         deviceTurnOnCount++
         smartLightDevice.turnOn()
@@ -111,11 +110,11 @@ class SmartHome(
         deviceTurnOnCount--
         smartLightDevice.turnOff()
     }
-    
+
     fun increaseLightBrightness() {
         smartLightDevice.increaseBrightness()
     }
-    
+
     fun turnOffAllDevices() {
         turnOffTv()
         turnOffLight()
@@ -144,7 +143,7 @@ class RangeRegulator(
 fun main() {
     var smartDevice: SmartDevice = SmartTvDevice("Android TV", "Entertainment")
     smartDevice.turnOn()
-    
+
     smartDevice = SmartLightDevice("Google Light", "Utility")
     smartDevice.turnOn()
 }
