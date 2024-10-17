@@ -1,7 +1,8 @@
 fun main() {
-    val trickFunction = ::trick
+    val trickFunction = trick
+    trick()
 }
 
-fun trick() {
+val trick = {
     println("No treats!")
 }
