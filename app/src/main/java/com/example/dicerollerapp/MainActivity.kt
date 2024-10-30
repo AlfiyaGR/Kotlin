@@ -12,6 +12,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.pointer.PointerIcon.Companion.Text
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.material3.Button
+import androidx.compose.material3.Text
+import androidx.compose.ui.res.stringResource
 import com.example.dicerollerapp.ui.theme.DiceRollerAppTheme
 
 class MainActivity : ComponentActivity() {
@@ -39,5 +42,9 @@ fun DiceWithButtonAndImage(modifier: Modifier = Modifier) {
     Column(
         modifier = modifier,
         horizontalAlignment = Alignment.CenterHorizontally
-    ) {}
+    ) {
+        Button(onClick = { /*TODO*/ }) {
+            Text(stringResource(R.string.roll))
+        }
+    }
 }
