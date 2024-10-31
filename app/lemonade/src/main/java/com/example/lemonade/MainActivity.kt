@@ -54,7 +54,81 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun LemonadeApp() {
 
+    var currentStep by remember { mutableIntStateOf(1) }
 
+    var squeezeCount by remember { mutableIntStateOf(0) }
+
+    Scaffold(
+        topBar = {
+            CenterAlignedTopAppBar(
+                title = {
+                    Text(
+                        text = "Lemonade",
+                        fontWeight = FontWeight.Bold
+                    )
+                },
+                colors = TopAppBarDefaults.largeTopAppBarColors(
+                    containerColor = MaterialTheme.colorScheme.primaryContainer
+                )
+            )
+        }
+    ) { innerPadding ->
+        Surface(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(innerPadding)
+                .background(MaterialTheme.colorScheme.tertiaryContainer),
+            color = MaterialTheme.colorScheme.background
+        ) {
+            when (currentStep) {
+                1 -> {
+                    LemonTextAndImage(
+                        textLabelResourceId = R.string.lemon_select,
+                        drawableResourceId = R.drawable.lemon_tree,
+                        contentDescriptionResourceId = R.string.lemon_tree_content_description,
+                        onImageClick = {
+                            currentStep = 2
+                            squeezeCount = (2..4).random()
+                        }
+                    )
+                }
+                2 -> {
+                    LemonTextAndImage(
+                        textLabelResourceId = R.string.lemon_squeeze,
+                        drawableResourceId = R.drawable.lemon_squeeze,
+                        contentDescriptionResourceId = R.string.lemon_content_description,
+                        onImageClick = {
+                            squeezeCount--
+                            if (squeezeCount == 0) {
+                                currentStep = 3
+                            }
+                        }
+                    )
+                }
+
+                3 -> {
+                    LemonTextAndImage(
+                        textLabelResourceId = R.string.lemon_drink,
+                        drawableResourceId = R.drawable.lemon_drink,
+                        contentDescriptionResourceId = R.string.lemonade_content_description,
+                        onImageClick = {
+                            currentStep = 4
+                        }
+                    )
+                }
+                4 -> {
+                    LemonTextAndImage(
+                        textLabelResourceId = R.string.lemon_empty_glass,
+                        drawableResourceId = R.drawable.lemon_restart,
+                        contentDescriptionResourceId = R.string.empty_glass_content_description,
+                        onImageClick = {
+                            currentStep = 1
+                        }
+                    )
+                }
+            }
+        }
+    }
 }
 
 @Composable
