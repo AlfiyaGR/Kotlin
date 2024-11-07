@@ -55,6 +55,7 @@ data class Question<T>(
 )
 
 fun main() {
-    val quiz = Quiz()
-    quiz.printQuiz()
+    Quiz().apply {
+    	printQuiz()
+	}
 }
