@@ -17,6 +17,27 @@ class Quiz : ProgressPrintable  {
         println(progressText)
     }
     
+    fun printQuiz() {
+        question1.let {
+            println(it.questionText)
+            println(it.answer)
+            println(it.difficulty)
+        }
+        println()
+        question2.let {
+            println(it.questionText)
+            println(it.answer)
+            println(it.difficulty)
+        }
+        println()
+        question3.let {
+            println(it.questionText)
+            println(it.answer)
+            println(it.difficulty)
+        }
+        println()
+    }
+    
     companion object StudentProgress {
         var total: Int = 10
         var answered: Int = 3
@@ -34,5 +55,6 @@ data class Question<T>(
 )
 
 fun main() {
-    Quiz().printProgressBar()
+    val quiz = Quiz()
+    quiz.printQuiz()
 }
