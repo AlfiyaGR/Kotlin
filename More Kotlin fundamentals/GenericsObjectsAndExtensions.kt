@@ -1,6 +1,13 @@
 val Quiz.StudentProgress.progressText: String
     get() = "${answered} of ${total} answered"
 
+fun Quiz.StudentProgress.printProgressBar() {
+    repeat(Quiz.answered) { print("▓") }
+    repeat(Quiz.total - Quiz.answered) { print("▒") }
+    println()
+    println(Quiz.progressText)
+}
+
 class Quiz {
     val question1 = Question<String>("Quoth the raven ___", "nevermore", Difficulty.MEDIUM)
     val question2 = Question<Boolean>("The sky is green. True or false", false, Difficulty.EASY)
@@ -23,5 +30,5 @@ data class Question<T>(
 )
 
 fun main() {
-    println(Quiz.progressText)
+    Quiz.printProgressBar()
 }
