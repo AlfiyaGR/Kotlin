@@ -18,7 +18,10 @@ fun main() {
     
     println(solarSystem[3])
     
-    solarSystem[8] = "Pluto"
+    val newSolarSystem = arrayOf(
+        "Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn",
+        "Uranus", "Neptune", "Pluto")
     
+    println(newSolarSystem[8])   
     
 }
