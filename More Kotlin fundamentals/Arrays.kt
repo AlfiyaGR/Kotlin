@@ -13,4 +13,12 @@ fun main() {
 	println(solarSystem[5])
 	println(solarSystem[6])
     println(solarSystem[7])
+    
+    solarSystem[3] = "Little Earth"
+    
+    println(solarSystem[3])
+    
+    solarSystem[8] = "Pluto"
+    
+    
 }
