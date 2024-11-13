@@ -23,4 +23,9 @@ fun main() {
     
     val shortEvents = events.filter { it.durationInMinutes < 60 }
 	println("You have ${shortEvents.size} short events.")
+    
+    val groupedEvents = events.groupBy { it.daypart }
+    groupedEvents.forEach { (daypart, events) ->
+        println("$daypart: ${events.size} events")
+    }
 }
