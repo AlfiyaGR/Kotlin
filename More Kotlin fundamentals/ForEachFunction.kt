@@ -52,6 +52,6 @@ val cookies = listOf(
 
 fun main() {
     cookies.forEach {
-        println("Menu item: $it")
+        println("Menu item: ${it.name}")
     }
 }
