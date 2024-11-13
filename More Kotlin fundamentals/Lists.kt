@@ -1,5 +1,5 @@
 fun main() {
-    val solarSystem = listOf(
+    val solarSystem = mutableListOf(
         "Mercury", "Venus", "Earth", "Mars", "Jupiter",
         "Saturn", "Uranus", "Neptune")
     
@@ -8,6 +8,9 @@ fun main() {
     println(solarSystem.get(3))
     println(solarSystem.indexOf("Earth"))
     println(solarSystem.indexOf("Pluto"))
+    
+    solarSystem.add("Pluto")
+    solarSystem.add(3, "Theia")
     
     for (planet in solarSystem) {
     	println(planet)
