@@ -1,5 +1,7 @@
 package com.example.artspaceapp
 
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -66,62 +68,72 @@ fun ArtSpaceMain() {
         mutableStateOf(0)
     }
     when (result) {
-        1-> ArtWithTitle(
+        1 -> ArtWithTitle(
             artPicture = R.drawable.edvardmunch,
             artTitle = stringResource(R.string.TEdvardMunch),
             artistName = stringResource(id = R.string.EdvardMunch)
         )
-        2-> ArtWithTitle(
+
+        2 -> ArtWithTitle(
             artPicture = R.drawable.johannes,
             artTitle = stringResource(R.string.TJohannes),
             artistName = stringResource(id = R.string.JohannesVermeer)
         )
-        3-> ArtWithTitle(
+
+        3 -> ArtWithTitle(
             artPicture = R.drawable.georges,
             artTitle = stringResource(R.string.TGeorgesSeurat),
             artistName = stringResource(id = R.string.George)
         )
-        4-> ArtWithTitle(
+
+        4 -> ArtWithTitle(
             artPicture = R.drawable.selfportrait,
             artTitle = stringResource(R.string.TSelfPortrait),
             artistName = stringResource(id = R.string.SelfPortrait)
         )
-        5-> ArtWithTitle(
+
+        5 -> ArtWithTitle(
             artPicture = R.drawable.eugenedelacroix,
             artTitle = stringResource(R.string.TEugeneDelacroix),
             artistName = stringResource(id = R.string.EugeneDelacroix)
         )
+
         else -> ArtWithTitle(
             artPicture = R.drawable.jean_antoine,
             artTitle = stringResource(R.string.TJeanAntoine),
             artistName = stringResource(id = R.string.JeanAntoine)
         )
     }
-    Row(
-        horizontalArrangement = Arrangement.SpaceEvenly,
+    Column(
         modifier = Modifier
-            .fillMaxWidth()
-            .padding(top = 700.dp)
+            .verticalScroll(rememberScrollState())
     ) {
-        Button(
-            onClick = { result-- },
-            shape = RoundedCornerShape(50.dp),
-            border = BorderStroke(2.dp, Color.Gray),
-            elevation = ButtonDefaults.buttonElevation(
-                defaultElevation = 20.dp,
-            )
+        Row(
+            horizontalArrangement = Arrangement.SpaceEvenly,
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(top = 700.dp)
         ) {
-            Text(text = "Back")
-        }
-        Button(
-            onClick = { result++ },
-            shape = RoundedCornerShape(50.dp),
-            border = BorderStroke(2.dp, Color.Gray),
-            elevation = ButtonDefaults.buttonElevation(
-                defaultElevation = 20.dp
-            )
-        ) {
-            Text(text = "Next")
+            Button(
+                onClick = { result-- },
+                shape = RoundedCornerShape(50.dp),
+                border = BorderStroke(2.dp, Color.Gray),
+                elevation = ButtonDefaults.buttonElevation(
+                    defaultElevation = 20.dp,
+                )
+            ) {
+                Text(text = "Back")
+            }
+            Button(
+                onClick = { result++ },
+                shape = RoundedCornerShape(50.dp),
+                border = BorderStroke(2.dp, Color.Gray),
+                elevation = ButtonDefaults.buttonElevation(
+                    defaultElevation = 20.dp
+                )
+            ) {
+                Text(text = "Next")
+            }
         }
     }
 }
@@ -131,7 +143,9 @@ fun ArtWithTitle(artPicture: Int, artTitle: String, artistName: String, modifier
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center,
-        modifier = Modifier.fillMaxSize()
+        modifier = Modifier
+            .fillMaxSize()
+            .verticalScroll(rememberScrollState())
     ) {
         Image(
             painter = painterResource(id = artPicture),
@@ -149,7 +163,9 @@ fun ArtWithTitle(artPicture: Int, artTitle: String, artistName: String, modifier
                 .padding(horizontal = 45.dp, vertical = 90.dp)
 
         ){
-            Column(modifier = Modifier.padding(16.dp)) {
+            Column(modifier = Modifier
+                .padding(16.dp)
+            ) {
                 Text(
                     text = artTitle,
                     fontSize = 25.sp,
