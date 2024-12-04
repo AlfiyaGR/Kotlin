@@ -1,6 +1,5 @@
 package com.example.superheroesapp
 
-
 import android.content.res.Configuration
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.ExperimentalAnimationApi
