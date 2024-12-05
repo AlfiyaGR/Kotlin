@@ -79,7 +79,18 @@ fun ThirtyDayApp() {
 
 @Composable
 fun TopAppBar() {
-    TODO("Not yet implemented")
+    Box(
+        modifier = Modifier
+            .background(MaterialTheme.colorScheme.primaryContainer)
+            .fillMaxWidth()
+            .padding(24.dp),
+        contentAlignment = Alignment.Center
+    ) {
+        Text(
+            text = stringResource(id = R.string.app_name),
+            style = MaterialTheme.typography.headlineMedium,
+        )
+    }
 }
 
 @Composable
@@ -94,15 +105,94 @@ fun TipList(tips: List<Tip>, modifier: Modifier = Modifier) {
     }
 }
 
-@Composable
-fun TipItem(tip: Tip) {
 
+@Composable
+fun TipItem(tip: Tip, modifier: Modifier = Modifier) {
+    var expanded by rememberSaveable { mutableStateOf(false) }
+    val color by animateColorAsState(
+        targetValue = if (expanded) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.errorContainer,
+        label = ""
+    )
+    Card(
+        modifier = modifier.padding(vertical = 8.dp, horizontal = 16.dp),
+        elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
+    ) {
+        Column(
+            modifier = Modifier
+                .animateContentSize(
+                    animationSpec = spring(
+                        dampingRatio = Spring.DampingRatioLowBouncy,
+                        stiffness = Spring.StiffnessLow
+                    )
+                )
+                .background(color = color)
+        ) {
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(16.dp),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Column {
+                    Text(
+                        text = stringResource(id = tip.dayRes),
+                        style = MaterialTheme.typography.headlineSmall
+                    )
+                    Text(
+                        text = stringResource(id = tip.titleRes),
+                        style = MaterialTheme.typography.bodySmall
+                    )
+                }
+                Spacer(modifier = Modifier.weight(1f))
+                IconButton(onClick = { expanded = !expanded }) {
+                    Icon(
+                        imageVector = if (expanded) Icons.Filled.ExpandLess else Icons.Filled.ExpandMore,
+                        tint = MaterialTheme.colorScheme.secondary,
+                        contentDescription = stringResource(id = R.string.expand_button_content_description)
+                    )
+                }
+            }
+            if (expanded) {
+                Column(
+                    modifier = Modifier.padding(
+                        start = 16.dp,
+                        bottom = 16.dp,
+                        end = 16.dp
+                    )
+                ) {
+                    Image(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(194.dp)
+                            .clip(RoundedCornerShape(16.dp)),
+                        painter = painterResource(id = tip.imageRes),
+                        contentDescription = null,
+                        contentScale = ContentScale.Crop
+                    )
+                    Spacer(modifier = Modifier.height(16.dp))
+                    Text(
+                        text = stringResource(id = tip.descRes),
+                        style = MaterialTheme.typography.bodySmall
+                    )
+                }
+            }
+        }
+    }
 }
+
 
 @Preview(showBackground = true)
 @Composable
-fun GreetingPreview() {
+fun ThirtyDaysAppPreview() {
     ThirtyDaysAppTheme {
+        ThirtyDayApp()
+    }
+}
+
+@Preview
+@Composable
+fun ThirtyDaysAppDarkThemePreview() {
+    ThirtyDaysAppTheme(darkTheme = true) {
         ThirtyDayApp()
     }
 }
